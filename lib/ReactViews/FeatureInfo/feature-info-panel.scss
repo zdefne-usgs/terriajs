@@ -72,7 +72,7 @@
 .btn {
   composes: btn from '../../Sass/common/_buttons.scss';
   padding: 4px 9px;
-  margin-right: 4px;
+  margin-right: 0px;
   color: $feature-info-btn-color;
 }
 
