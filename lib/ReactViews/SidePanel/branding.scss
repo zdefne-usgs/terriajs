@@ -10,7 +10,8 @@
   @media screen and (min-width: $sm) {
     width: 100%;
     padding: $padding;
-    height: $logo-height;
+    padding-right: 18px;
+    height: $logo-height+padding;
   }
 
   @media print{
