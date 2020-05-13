@@ -1,9 +1,20 @@
-@import '~terriajs-variables';
+@import "~terriajs-variables";
 
 .short-report {
   padding: $padding;
-}
 
+  h1 {
+    font-size: $font-size-mid-small;
+  }
+
+  p {
+    font-size: $font-size-small;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
 
 .now-viewing-item__short-report {
   .collapsible-header {

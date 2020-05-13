@@ -1,5 +1,5 @@
-@import '~terriajs-variables';
-@import '../../Sass/common/mixins';
+@import "~terriajs-variables";
+@import "../../Sass/common/mixins";
 
 .map__inner {
   display: table;
@@ -9,6 +9,12 @@
   * {
     box-sizing: border-box;
   }
+}
+.map__innerChrome {
+  // Chrome only :( hack until
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=1001663 gets resolved
+  display: flex;
+  flex-flow: column;
 }
 
 .map__row {
@@ -25,6 +31,12 @@
   position: relative;
   width: 100%;
 }
+.map__cellChrome {
+  // Chrome only :( hack until
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=1001663 gets resolved
+  display: block;
+  height: 100%;
+}
 
 @include empty-module("map-cell-map");
 
@@ -38,7 +50,7 @@
 @include empty-module("feedback");
 
 .location-distance {
-  composes: clearfix from '../../Sass/common/_base.scss';
+  composes: clearfix from "../../Sass/common/_base.scss";
   display: none;
   @media (min-width: $sm) {
     display: block;
@@ -50,10 +62,20 @@
 }
 
 .feedback-button-wrapper {
+  @media (min-width: $sm) {
+    bottom: 100px;
+    right: $padding * 2;
+    margin: 0;
+  }
   position: absolute;
-  bottom: 100px;
-  right: $padding*2;
   z-index: 0;
+  bottom: 25px;
+  right: 16px;
+  margin: 4px 0;
+}
+
+.with-time-series-controls {
+  bottom: 58px;
 }
 
 .print-disclaimer {

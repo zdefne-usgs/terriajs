@@ -1,33 +1,38 @@
-'use strict';
-import ObserveModelMixin from './ObserveModelMixin';
-import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
+"use strict";
+import ObserveModelMixin from "./ObserveModelMixin";
+import React from "react";
+import createReactClass from "create-react-class";
+import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
+import classNames from "classnames";
 import Icon from "./Icon.jsx";
-
-import Styles from './loader.scss';
+import Styles from "./loader.scss";
 
 const Loader = createReactClass({
-    displayName: 'Loader',
-    mixins: [ObserveModelMixin],
+  displayName: "Loader",
+  mixins: [ObserveModelMixin],
 
-    getDefaultProps() {
-        return {
-            className: '',
-            message: 'Loading...'
-        };
-    },
+  getDefaultProps() {
+    return {
+      className: "",
+      message: "Loading..."
+    };
+  },
 
-    propTypes: {
-        message: PropTypes.string,
-        className: PropTypes.string
-    },
+  propTypes: {
+    message: PropTypes.string,
+    className: PropTypes.string,
+    t: PropTypes.func.isRequired
+  },
 
-    render() {
-        return <span className={Styles.loader}>
-                  <Icon glyph={Icon.GLYPHS.loader}/>
-                  <span>{this.props.message || 'Loading'}</span>
-               </span>;
-    },
+  render() {
+    const { t } = this.props;
+    return (
+      <span className={classNames(Styles.loader, this.props.className)}>
+        <Icon glyph={Icon.GLYPHS.loader} />
+        <span>{this.props.message || t("loader.loadingMessage")}</span>
+      </span>
+    );
+  }
 });
-module.exports = Loader;
+module.exports = withTranslation()(Loader);
